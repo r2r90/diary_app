@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-7e2c6272-cac7-4cdc-9719-6a5c01ac4e9a" data-name="Ebene 2" xmlns="http://www.w3.org/2000/svg" width="34.7163912799" height="33.4350009649" viewBox="0 0 34.7163912799 33.4350009649">
+  <defs>
+    <style>
+      .uuid-227ecc73-5fef-4efb-920c-3f9dd27ef3fc {
+        fill: none;
+        stroke: #f3f4f5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="uuid-896d5adf-be63-4113-9344-365630f39225" data-name="Layer 14 copy 2">
+    <g>
+      <polygon class="uuid-227ecc73-5fef-4efb-920c-3f9dd27ef3fc" points="20.6844359446 32.4350009649 33.7163912799 1 1 10.3610302393 15.1899978903 17.5208901631 20.6844359446 32.4350009649"/>
+      <line class="uuid-227ecc73-5fef-4efb-920c-3f9dd27ef3fc" x1="33.7163912799" y1="1" x2="15.1899978903" y2="17.5208901631"/>
+    </g>
+  </g>
+</svg>
