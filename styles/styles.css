@@ -1,20 +1,26 @@
-html {
-    font-family: system-ui, -apple-system,
-    "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans",
-    "Liberation Sans", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+* {
+    box-sizing: border-box;
 }
 
-nav {
+html {
+    font-family: system-ui, -apple-system, 
+        "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", 
+        "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", 
+        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.nav {
     background-color: #113343;
     height: 4rem;
+}
+
+.nav__layout {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
 }
 
-.nav__brand {
+.nav-brand {
     display: block;
     color: white;
     text-decoration: none;
@@ -22,36 +28,149 @@ nav {
     line-height: 4rem;
 }
 
-.nav-bran-image {
-    color: #71b68a;
+.nav-brand__image {
     width: 3rem;
     height: 4rem;
     vertical-align: bottom;
+    color: #71b68a;
 }
-
-.nav__brand:hover .nav-bran-image {
-    color: #a3e0b9;
+.nav-brand:hover .nav-brand__image {
+    color: #8ed8a9;
 }
 
 .button {
-    background-color: #f35a39;
-    width: 7rem;
-    height: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: inline-block;
+    background-color: #F35A39;
     color: white;
     text-decoration: none;
-    padding: .3rem .6rem;
-    border-radius: .4rem;
+    padding: 0rem 1rem;
+    border-radius: 0.5rem;
+    line-height: 2.5rem;
+    /* text-transform: uppercase; */
 }
-
 .button:hover {
-    background-color: #d54b28;
+    background-color: #d95032;
 }
 
 .button__icon {
     width: 1.5rem;
     height: 1.5rem;
+    position: relative;
+    top: 0.4rem;
+    margin-right: 0.4rem;
 }
 
+.main-heading {
+    color: #113343;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.25em;
+}
+
+.container {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 0 auto;
+}
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+.card {
+    background-color: #F3F4F5;
+    padding: 0rem;
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+@media (min-width: 768px) {
+    .card {
+        flex-direction: row;
+    }
+}
+
+.card__heading {
+    margin: 0;
+}
+
+.card__image {
+    display: block;
+    height: 15rem;
+    width: 100%;
+    object-fit: cover;
+    box-shadow: 0rem 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+@media (min-width: 768px) {
+    .card__image {
+        width: 15rem;
+        height: 2rem;
+        min-height: 100%;
+        box-shadow: 0.25rem 0rem 0.5rem rgba(0, 0, 0, 0.1);
+    }
+}
+
+.card__desc-container {
+    padding-left: 1rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+}
+
+.card__desc-time {
+    color: #328677;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.card__heading {
+    color: #113343;
+    font-size: 1.75rem;
+}
+
+.card__heading::after {
+    content: "";
+    display: block;
+    width: 6rem;
+    height: 0.125rem;
+    background-color: #328677;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card__paragraph {
+    color: #113343;
+    line-height: 1.33em;
+    font-size: 1rem;
+}
+
+.pagination {
+
+}
