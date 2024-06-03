@@ -254,3 +254,30 @@ html {
 .flash:hover {
     background-color: #1e413b;
 }
+
+
+.footer {
+    background-color: #113343;
+    padding: 3rem 0rem;
+}
+
+.footer::after{
+    content: "";
+    display: block;
+    width: 10rem;
+    height: 0.125rem;
+    background-color: white;
+    margin: 2.5rem auto 0 auto;
+    opacity: .5;
+}
+
+.footer__heading {
+    color: white;
+}
+
+.footer__description {
+    color: #8ed8a9;
+    max-width: 25rem;
+    line-height: 1.33rem;
+}
+
