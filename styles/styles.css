@@ -3,10 +3,10 @@
 }
 
 html {
-    font-family: system-ui, -apple-system, 
-        "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", 
-        "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", 
-        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans",
+    "Liberation Sans", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .nav {
@@ -34,6 +34,7 @@ html {
     vertical-align: bottom;
     color: #71b68a;
 }
+
 .nav-brand:hover .nav-brand__image {
     color: #8ed8a9;
 }
@@ -48,6 +49,7 @@ html {
     line-height: 2.5rem;
     /* text-transform: uppercase; */
 }
+
 .button:hover {
     background-color: #d95032;
 }
@@ -74,26 +76,31 @@ html {
     padding-right: 1rem;
     margin: 0 auto;
 }
+
 @media (min-width: 576px) {
     .container {
         max-width: 540px;
     }
 }
+
 @media (min-width: 768px) {
     .container {
         max-width: 720px;
     }
 }
+
 @media (min-width: 992px) {
     .container {
         max-width: 960px;
     }
 }
+
 @media (min-width: 1200px) {
     .container {
         max-width: 1140px;
     }
 }
+
 @media (min-width: 1400px) {
     .container {
         max-width: 1320px;
@@ -110,6 +117,7 @@ html {
     flex-direction: column;
     overflow: hidden;
 }
+
 @media (min-width: 768px) {
     .card {
         flex-direction: row;
@@ -127,6 +135,7 @@ html {
     object-fit: cover;
     box-shadow: 0rem 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
+
 @media (min-width: 768px) {
     .card__image {
         width: 15rem;
@@ -172,5 +181,41 @@ html {
 }
 
 .pagination {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+}
 
+.pagination__link {
+    display: block;
+    color: #113343;
+    border: 0.125rem solid rgb(200, 200, 200);
+    width: 2rem;
+    height: 2rem;
+    text-decoration: none;
+    text-align: center;
+    line-height: 1.75rem;
+    margin-left: .1rem;
+    border-radius: 0.4rem;
+
+}
+
+.pagination-link__active {
+    border: 0.125rem solid #328677;
+    color: #328677;
+}
+
+.pagination__link:hover {
+    color: #fff;
+    background-color: #328677;
+    border: 0.125rem solid #328677;
+}
+
+.flash {
+    background-color: #328677;
+    color: #fff;
+}
+
+.flash:hover {
+    background-color: #1e413b;
 }
