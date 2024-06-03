@@ -9,6 +9,7 @@ html {
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+
 .nav {
     background-color: #113343;
     height: 4rem;
@@ -62,7 +63,41 @@ html {
     margin-right: 0.4rem;
 }
 
+.main {
+    position: relative;
+    overflow: hidden;
+}
+
+.main::before,
+.main::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -0.1rem;
+    display: block;
+    width: 10rem;
+    bottom: -1rem;
+    background-image: url("/images/bg-lines.svg");
+    opacity: .1;
+    background-size: cover;
+    background-position: right center;
+
+}
+
+.main::before {
+    left: 0;
+}
+
+.main::after {
+    right: 0;
+    transform: scaleX(-1);
+
+}
+
+
 .main-heading {
+    margin-top: 0;
+    padding-top: 0.67em;
     color: #113343;
     font-size: 2.5rem;
     text-transform: uppercase;
