@@ -1,18 +1,17 @@
 <?php
 
+date_default_timezone_set('Europe/Paris');
 require __DIR__ . '/inc/functions.inc.php';
 require __DIR__ . '/inc/db-connect.inc.php';
+
 
 $perPage = 2;
 $page = (int)($_GET['page'] ?? 1);
 if ($page < 1) $page = 1;
-
 $offset = ($page - 1) * $perPage;
-
 $stmtCount = $pdo->prepare('SELECT COUNT(*) AS `count` FROM `entries`');
 $stmtCount->execute();
 $count = $stmtCount->fetch(PDO::FETCH_ASSOC);
-
 $numPages = ceil($count['count'] / $perPage);
 
 
@@ -21,10 +20,9 @@ $stmt->bindValue('perPage', (int)$perPage, PDO::PARAM_INT);
 $stmt->bindValue('offset', (int)$offset, PDO::PARAM_INT);
 $stmt->execute();
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
 ?>
-
-
-
 
 
 <?php require __DIR__ . '/views/header.php'; ?>
@@ -35,8 +33,12 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <img class="card__image" src="images/pexels-canva-studio-3153199.jpg" alt=""/>
         </div>
         <div class="card__desc-container">
-            <div class="card__desc-time"><?php echo e($result['date']) ?></div>
-            <h2 class="card__heading"><?php echo e($result['title']) ?></h2>
+            <?php
+            $dateExploded = explode('-', $result['date']);
+            $timestamp = mktime(12, 0, 0, $dateExploded[1], $dateExploded[2], $dateExploded[0]);
+            ?>
+            <div class="card__desc-time"><?php echo e(date('d M Y', $timestamp)); ?></div>
+            <h2 class="card__heading"><?php echo e($result['title']) ?> </h2>
             <p class="card__paragraph">
                 <?php echo nl2br(e($result['message'])) ?>
             </p>
