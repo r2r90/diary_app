@@ -19,17 +19,23 @@ if (!empty($_POST)) {
             $originalImage = $_FILES['image']['tmp_name'];
             $imageName = $name . '-' . time() . '.jpg';
             $destImage = __DIR__ . '/uploads/' . $imageName;
-            [$width, $height] = getimagesize($originalImage);
-            $maxDim = 400;
-            $scaleFactor = $maxDim / max($width, $height);
+            $imageSize = getimagesize($originalImage);
+            if (!empty($imageSize)) {
+                [$width, $height] = $imageSize;
+                $maxDim = 400;
+                $scaleFactor = $maxDim / max($width, $height);
 
-            $newWidth = $width * $scaleFactor;
-            $newHeight = $height * $scaleFactor;
+                $newWidth = $width * $scaleFactor;
+                $newHeight = $height * $scaleFactor;
 
-            $im = imagecreatefromjpeg($originalImage);
-            $newImage = imagecreatetruecolor($newWidth, $newHeight);
-            imagecopyresampled($newImage, $im, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-            imagejpeg($newImage, $destImage);
+                $im = imagecreatefromjpeg($originalImage);
+                if (!empty($im)) {
+                    $newImage = imagecreatetruecolor($newWidth, $newHeight);
+                    imagecopyresampled($newImage, $im, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+                    imagejpeg($newImage, $destImage);
+                }
+
+            }
         }
 
     }
