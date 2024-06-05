@@ -4,18 +4,41 @@ require __DIR__ . '/inc/functions.inc.php';
 require __DIR__ . '/inc/db-connect.inc.php';
 
 
-
 if (!empty($_POST)) {
     $title = (string)($_POST['title'] ?? '');
     $message = (string)($_POST['message'] ?? '');
-    $date = (string)($_POST['date']);
+    $date = (string)($_POST['date'] ?? '');
+    $imageName = null;
 
-    $stmt = $pdo->prepare("INSERT INTO `entries` (`title`, `message`, `date`) VALUES (:title, :message, :date)");
 
+    /* IMAGE UPLOAD */
+    if (!empty($_FILES && $_FILES['image'])) {
+        if ($_FILES['image']['error'] == 0 && $_FILES['image']['size'] > 0) {
+            $nameWithoutExtension = pathinfo($_FILES['image']['name'], PATHINFO_FILENAME);
+            $name = preg_replace('/[^a-zA-Z0-9]/', '', $nameWithoutExtension);
+            $originalImage = $_FILES['image']['tmp_name'];
+            $imageName = $name . '-' . time() . '.jpg';
+            $destImage = __DIR__ . '/uploads/' . $imageName;
+            [$width, $height] = getimagesize($originalImage);
+            $maxDim = 400;
+            $scaleFactor = $maxDim / max($width, $height);
 
+            $newWidth = $width * $scaleFactor;
+            $newHeight = $height * $scaleFactor;
+
+            $im = imagecreatefromjpeg($originalImage);
+            $newImage = imagecreatetruecolor($newWidth, $newHeight);
+            imagecopyresampled($newImage, $im, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+            imagejpeg($newImage, $destImage);
+        }
+
+    }
+
+    $stmt = $pdo->prepare("INSERT INTO `entries` (`title`, `message`, `date`, `image`) VALUES (:title, :message, :date, :image)");
     $stmt->bindValue(':title', $title);
     $stmt->bindValue(':message', $message);
     $stmt->bindValue(':date', $date);
+    $stmt->bindValue(':image', $imageName);
     $stmt->execute();
 
     echo '<a href="index.php">Continue to the diary</a>';
@@ -30,7 +53,7 @@ if (!empty($_POST)) {
 
     <h1 class="main-heading">New Entry</h1>
 
-    <form method="POST" action="form.php">
+    <form method="POST" action="form.php" enctype="multipart/form-data">
         <div class="form-group">
             <label class="from-group__label" for="title">Title:</label>
             <input class="from-group__input" type="text" id="title" name="title" required/>
@@ -38,6 +61,10 @@ if (!empty($_POST)) {
         <div class="form-group">
             <label class="from-group__label" for="date">Date:</label>
             <input class="from-group__input" type="date" id="date" name="date" required/>
+        </div>
+        <div class="form-group">
+            <label class="from-group__label" for="image">Image:</label>
+            <input class="from-group__input" type="file" id="image" name="image"/>
         </div>
         <div class="form-group">
             <label class="from-group__label" for="message">Message:</label>
